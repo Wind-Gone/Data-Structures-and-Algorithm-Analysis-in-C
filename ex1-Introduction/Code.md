@@ -245,8 +245,57 @@ int main(int argc, char const *argv[])
 
 
 
+
+
 ##### 1.3 只使用处理1/0的printDigit方法，编写一种方法以输出任意double型量（可以是负的）。
+
+```c++
+#include<bits/stdc++.h>
+using namespace std;
+
+
+void PrintDigit(unsigned int N){
+    cout<<N;
+}
+
+void PrintOut(unsigned int N){
+    if (N>=10)
+        PrintOut(N/10);
+    PrintDigit(N-floor(N/10) *10);
+}
+
+void PrintOut(double N,  size_t precision){
+    if (N < 0) {
+		cout << '-';
+		N = -N;
+	}
+    // cout << typeid(N).name() << endl;
+    size_t integer_part  =  static_cast<int> (N);
+    PrintOut(integer_part);
+    cout<<".";
+    double rest_part = N - integer_part;
+    int to_int= static_cast<int>(rest_part * pow(10, precision));
+	PrintOut(to_int);
+}
+
+
+int main(int argc, char const *argv[])
+{
+    PrintOut(152);
+	cout << endl;
+	PrintOut(-13.269, 3);
+	cout << endl;
+    return 0;
+}
+
+```
 
 
 
 ##### 1.4 编写 一个程序，使它读入被一些 include 语句修饰的文件并且输出这个文件。
+
+```
+
+```
+
+
